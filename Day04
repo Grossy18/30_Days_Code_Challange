@@ -1,0 +1,33 @@
+//String palindrome without using inbuilt function
+
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        String str = "racecar";
+
+        boolean isPalindrome = true;
+        int length = str.length();
+        
+        for (int i = 0; i < length / 2; i++) {
+            if (str.charAt(i) != str.charAt(length - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
+            System.out.println("The string is a palindrome.");
+        } else {
+            System.out.println("The string is not a palindrome.");
+        }
+    }
+}
+
+
+/*
+A boolean variable, isPalindrome, is initialized to true, assuming the string is a palindrome.
+The length of the string is calculated.
+A for loop compares characters from the beginning and end of the string towards the middle.
+If any pair of characters is not the same, isPalindrome is set to false, and the loop breaks.
+Finally, isPalindrome is checked to determine and print whether the string is a palindrome or not
+*/
