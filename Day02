@@ -1,0 +1,31 @@
+/*
+ Swapping of two numbers without using third variable
+*/
+
+public class SwapNumbersWithoutThirdVariable {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 7;
+
+        a = a + b; // Sum of a and b is stored in 'a'
+        b = a - b; // 'a' (which now holds the sum) minus 'b' gives the original 'a', and it's stored in 'b'
+        a = a - b; // 'a' (which still holds the sum) minus the new 'b' (which is the original 'a') gives the original 'b', and it's stored in 'a'
+
+        System.out.println("After swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+    }
+}
+
+
+
+
+/*
+       The code swaps the values of two variables, a and b, without using a third variable by performing arithmetic operations:
+1.	a = a + b adds a and b and stores the sum in a.
+2.	b = a - b subtracts the original value of b from the new a, storing it in b. Now b holds the original value of a.
+3.	a = a - b subtracts the original value of a (now in b) from the sum in a, storing it in a. Now a holds the original value of b.
+The end result is that the values of a and b are swapped.
+
+
+        */
