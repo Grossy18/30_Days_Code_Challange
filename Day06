@@ -1,0 +1,30 @@
+//print middle element of array
+
+
+public class MiddleElement 
+{
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 3, 4, 5 };
+        int n = arr.length;
+
+        if (n % 2 == 0) {
+            System.out.println("The array has an even number of elements, so there is no middle element.");
+        } else {
+            int middleIndex = n / 2;
+            int middleElement = arr[middleIndex];
+            System.out.println("The middle element is: " + middleElement);
+        }
+    }
+}
+
+
+/*
+explanation of the code:
+
+Define an array of integers.
+Calculate the length of the array (number of elements).
+Check if the array has an even number of elements. If so, print a message stating that there is no middle element.
+If the array has an odd number of elements, calculate the index of the middle element using integer division.
+Access and print the middle element of the array.
+This code determines and prints the middle element of the array, handling both even and odd-length arrays.
+*/
