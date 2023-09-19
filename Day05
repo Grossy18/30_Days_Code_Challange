@@ -1,0 +1,42 @@
+//Print second largest element from unsorted array
+
+
+public class SecondLargestElement {
+    public static void main(String[] args) {
+        int[] arr = { 12, 35, 1, 10, 34, 1 };
+        int n = arr.length;
+
+        if (n < 2) {
+            System.out.println("Array should have at least two elements.");
+        } else {
+            int firstMax = Integer.MIN_VALUE;
+            int secondMax = Integer.MIN_VALUE;
+
+            // Find the first and second largest elements
+            for (int i = 0; i < n; i++) {
+                if (arr[i] > firstMax) {
+                    secondMax = firstMax;
+                    firstMax = arr[i];
+                } else if (arr[i] > secondMax && arr[i] != firstMax) {
+                    secondMax = arr[i];
+                }
+            }
+
+            if (secondMax != Integer.MIN_VALUE) {
+                System.out.println("The second largest element is: " + secondMax);
+            } else {
+                System.out.println("There is no second largest element in the array.");
+            }
+        }
+    }
+}
+
+
+/*
+1.	Initialize two variables, firstMax and secondMax, to the minimum possible integer value.
+2.	Loop through the array, comparing each element with firstMax and secondMax.
+3.	Update firstMax and secondMax as needed to track the two largest elements.
+4.	After the loop, secondMax will contain the second largest element in the array.
+5.	If there is no valid second largest element (e.g., when the array has fewer than two elements), handle that case accordingly.
+
+*/
