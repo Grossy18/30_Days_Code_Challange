@@ -1,0 +1,25 @@
+public class AdditionWithoutThirdVariable 
+{
+    public static void main(String[] args)
+  {
+
+        int a = 10;
+        int b = 20;
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        
+        System.out.println("Swapping value a: " + a);
+        System.out.println("Swapping value b: " + b);
+    }
+}
+
+ /*
+The code uses a bitwise XOR operation to swap the values of two variables, a and b, without using a third variable. Here's a brief explanation:
+1.	a = a ^ b; - This line XORs a with b and stores the result in a. This effectively combines the bits of a and b to create a new value for a.
+2.	b = a ^ b; - Now, we XOR the new a (which contains the original value of b) with b and store the result in b. This operation essentially isolates the original value of a and assigns it to b.
+3.	a = a ^ b; - Finally, we XOR the new a (which contains the original value of b) with the new b (which contains the original value of a) and store the result in a. This swaps the values completely, and a now holds the original value of b, and b holds the original value of a.
+This code efficiently swaps the values of a and b without needing a third variable for temporary storage.
+
+        */
