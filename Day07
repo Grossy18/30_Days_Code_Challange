@@ -1,0 +1,24 @@
+//write a program how to change value of constant
+
+public class ChangeConstantValue {
+    public static void main(String[] args) {
+        int myVariable = 42; // Declare and initialize a regular variable
+
+        // Change the value of the variable
+        myVariable = 10;
+
+        System.out.println("The value of myVariable is: " + myVariable);
+    }
+}
+
+
+/*
+In this code:
+
+We declare a regular variable myVariable and initialize it with the value 42.
+
+Then, we change the value of myVariable to 10 without any issues because it's not declared as a final constant.
+
+If you truly need to change a value that should be considered constant throughout your program, it's better to use a configuration file or a settings mechanism to manage such values. Constants, by definition in Java, are meant to remain unchanged after initialization.
+
+*/
