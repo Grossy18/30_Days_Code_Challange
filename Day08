@@ -1,0 +1,98 @@
+//program to find maximum and minumum of two numbers without using any loop or condition
+
+
+
+public class MaxMinWithoutLoopCondition {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 5;
+
+        int maxResult = findMax(num1, num2);
+        int minResult = findMin(num1, num2);
+
+        System.out.println("Maximum: " + maxResult);
+        System.out.println("Minimum: " + minResult);
+    }
+
+    public static int findMax(int a, int b) {
+        return a - ((a - b) & ((a - b) >> 31));
+    }
+
+    public static int findMin(int a, int b) {
+        return b + ((a - b) & ((a - b) >> 31));
+    }
+}
+
+/*
+
+Certainly, let's break down the Java program step by step to explain how it calculates the maximum and minimum values of two numbers without using loops or conditional statements.
+
+Here's the program again for reference:
+
+java
+Copy code
+public class MaxMinWithoutLoopCondition {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 5;
+
+        int maxResult = findMax(num1, num2);
+        int minResult = findMin(num1, num2);
+
+        System.out.println("Maximum: " + maxResult);
+        System.out.println("Minimum: " + minResult);
+    }
+
+    public static int findMax(int a, int b) {
+        return a - ((a - b) & ((a - b) >> 31));
+    }
+
+    public static int findMin(int a, int b) {
+        return b + ((a - b) & ((a - b) >> 31));
+    }
+}
+Now, let's explain how it works:
+
+We have two integers, num1 and num2, which we want to find the maximum and minimum values for.
+
+The findMax function calculates the maximum of a and b without using conditionals or loops. Here's how it works:
+
+Calculate the difference between a and b using (a - b). This difference will be negative if a is smaller than b.
+(a - b) >> 31 performs an arithmetic right shift by 31 bits on the difference. This shift operation effectively results in either all 0s (if a is greater than or equal to b) or all 1s (if a is less than b). This is done to create a mask for the difference.
+((a - b) & ((a - b) >> 31)) applies the mask to the difference using a bitwise AND operation. If the mask is all 0s (meaning a is greater than or equal to b), this step does not affect the difference. If the mask is all 1s (meaning a is less than b), it sets all bits of the difference to 0. This step ensures that if a is less than b, the difference is set to 0.
+Finally, we subtract this modified difference from a to get the maximum value. If a is greater than or equal to b, this is equivalent to a - 0, which is a. If a is less than b, it becomes a - (a - b), which is b.
+The findMin function works similarly to find the minimum value of a and b without using conditionals or loops:
+
+Calculate the difference between a and b using (a - b). This difference will be negative if a is smaller than b.
+(a - b) >> 31 performs an arithmetic right shift by 31 bits on the difference to create a mask.
+((a - b) & ((a - b) >> 31)) applies the mask to the difference using a bitwise AND operation. If the mask is all 0s (meaning a is greater than or equal to b), this step does not affect the difference. If the mask is all 1s (meaning a is less than b), it sets all bits of the difference to 0. This step ensures that if a is less than b, the difference is set to 0.
+Finally, we add this modified difference to b to get the minimum value. If a is greater than or equal to b, this is equivalent to b + 0, which is b. If a is less than b, it becomes b + (a - b), which is a.
+In the main function, we call findMax and findMin with num1 and num2, respectively, and then print the results.
+*/
+
+//another way
+
+
+public class MaxMinWithoutLoopCondition {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 5;
+
+        // Find the maximum of num1 and num2
+        int maxResult = Math.max(num1, num2);
+
+        // Find the minimum of num1 and num2
+        int minResult = Math.min(num1, num2);
+
+        System.out.println("Maximum: " + maxResult);
+        System.out.println("Minimum: " + minResult);
+    }
+}
+
+
+/*
+In this approach, we use the Math.max and Math.min functions from the Math class to easily find the maximum and minimum of two numbers. This approach is simpler and more readable compared to bitwise operations and arithmetic.
+
+*/
+
+
