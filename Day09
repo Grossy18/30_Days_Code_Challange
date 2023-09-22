@@ -1,0 +1,57 @@
+//given an array containing only hte elements 0,1 and 2 sort the array i place without using extra place array={2,0,,1,1,0,2}
+
+
+public class SortArray {
+    public static void sortArray(int[] nums) {
+        int low = 0;        
+        int mid = 0;        
+        int high = nums.length - 1;  
+
+        while (mid <= high) {
+            if (nums[mid] == 0) {
+                int temp = nums[low];
+                nums[low] = nums[mid];
+                nums[mid] = temp;
+                low++;      
+                mid++;      
+            } else if (nums[mid] == 1) {
+                mid++;      
+            } else {
+                int temp = nums[mid];
+                nums[mid] = nums[high];
+                nums[high] = temp;
+                high--;     
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {2, 0, 1, 1, 0, 2};
+        sortArray(array);
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+
+/*
+We define a SortArray function that takes an array nums as input.
+
+We initialize three pointers: low, mid, and high. These pointers represent the boundaries between the three elements: 0s, 1s, and 2s.
+
+We enter a while loop that continues until mid is less than or equal to high. This loop ensures that all elements are processed.
+
+Inside the loop, we check the value of nums[mid]:
+
+If nums[mid] is 0, it means we've encountered a 0. We swap nums[low] and nums[mid], increment low and mid, moving the 0s boundary to the right and advancing the mid pointer.
+
+If nums[mid] is 1, it means we've encountered a 1. In this case, we simply increment mid to move forward.
+
+If nums[mid] is 2, it means we've encountered a 2. We swap nums[mid] and nums[high], decrement high, moving the 2s boundary to the left. We don't increment mid here because the swapped element at nums[mid] could be 0, 1, or 2, and we need to recheck it.
+
+After the loop, the array is sorted in place, with 0s on the left, 1s in the middle, and 2s on the right.
+
+The main function demonstrates how to use the SortArray function by sorting an example array and printing the sorted result.
+*/
