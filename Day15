@@ -1,0 +1,56 @@
+//Given an array having both positive and negative integers.Find length of the largest subarray with sum o array = {15, -2, 2, -8, 1, 7, 10, 231]
+
+import java.util.HashMap;
+
+public class LargestZeroSumSubarray {
+    public static void main(String[] args) {
+        int[] nums = {15, -2, 2, -8, 1, 7, 10, 23};
+        int maxLength = calculateMaxLengthZeroSumSubarray(nums);
+        System.out.println("Length of largest subarray with zero sum: " + maxLength);
+    }
+
+    public static int calculateMaxLengthZeroSumSubarray(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int maxLength = 0;
+        int sum = 0;
+        HashMap<Integer, Integer> sumToIndexMap = new HashMap<>();
+
+        // Initialize the map with a sum of 0 at index -1 to handle cases starting from index 0.
+        sumToIndexMap.put(0, -1);
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            if (sumToIndexMap.containsKey(sum)) {
+                int startIndex = sumToIndexMap.get(sum);
+                maxLength = Math.max(maxLength, i - startIndex);
+            } else {
+                sumToIndexMap.put(sum, i);
+            }
+        }
+
+        return maxLength;
+    }
+}
+
+
+/*
+In this code:
+
+We use a HashMap sumToIndexMap to store the cumulative sum up to each index along with its corresponding index.
+
+We initialize the map with a sum of 0 at index -1 to handle cases starting from index 0.
+
+We iterate through the elements of the nums array, updating the sum variable as we go.
+
+If we encounter a sum value that we've seen before (i.e., it exists in the sumToIndexMap), we can calculate the length of the subarray with a zero sum by subtracting the index where we first saw this sum from the current index. We update maxLength if this length is larger.
+
+If we haven't seen the sum before, we add it to the sumToIndexMap along with its current index.
+
+Finally, the maxLength variable contains the length of the largest subarray with a sum of zero.
+
+When you run the code with the provided example array nums, it will calculate and print the length of the largest subarray with a sum of zero
+*/
