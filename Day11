@@ -1,0 +1,35 @@
+//write java function to print all numbers between a low and high numbers
+
+public class NumberPrinter {
+    public static void printNumbersInRange(int low, int high) {
+        if (low > high) {
+            System.out.println("Invalid input: Low number is greater than high number.");
+            return;
+        }
+
+        for (int i = low; i <= high; i++) {
+            System.out.print(i + " ");
+        }
+
+        System.out.println(); // Print a new line after printing the numbers
+    }
+
+    public static void main(String[] args) {
+        int low = 5;
+        int high = 125;
+        printNumbersInRange(low, high);
+    }
+}
+
+
+/*
+The printNumbersInRange function takes two integer parameters, low and high, representing the range of numbers to be printed.
+
+It checks if low is greater than high, and if so, it prints an error message and returns.
+
+It then uses a for loop to iterate through the numbers from low to high, inclusive, and prints each number followed by a space.
+
+After printing all the numbers, it prints a new line to separate the output.
+
+In the main method, you can specify the values of low and high to define the range of numbers you want to print. When you run the code, it will print all numbers within the specified range.
+*/
