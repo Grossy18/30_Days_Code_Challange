@@ -1,0 +1,52 @@
+/*Given an array containing N+1 integers, where the integers are in the range from 1 to N, and there is exactly one duplicate element in the array. Write a Java function to efficiently find and return the duplicate element.
+array = [1, 3, 4, 2, 2] */
+
+public class FindDuplicateElement {
+    public int findDuplicate(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1; // No valid input or duplicate found
+        }
+
+        int slow = nums[0];
+        int fast = nums[0];
+
+        // Phase 1: Detect the intersection point of the two pointers
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        // Phase 2: Find the entrance to the cycle (duplicate element)
+        slow = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+
+        return slow; // Return the duplicate element
+    }
+
+    public static void main(String[] args) {
+        FindDuplicateElement solution = new FindDuplicateElement();
+        int[] nums = {1, 3, 4, 2, 2};
+        int duplicate = solution.findDuplicate(nums);
+        System.out.println("Duplicate element: " + duplicate);
+    }
+}
+
+
+/*
+In this code:
+
+We use two pointers, slow and fast, initially pointing to the first element of the array.
+
+In Phase 1, we advance the slow pointer one step at a time, while the fast pointer advances two steps at a time. When they meet, we have detected the intersection point within the cycle.
+
+In Phase 2, we reset the slow pointer to the first element and continue moving both pointers one step at a time until they meet again. This time, they meet at the entrance of the cycle, which corresponds to the duplicate element.
+
+We return the duplicate element as the result.
+
+When you run the code with the provided array nums, it will efficiently find and print the duplicate element:
+
+This code can efficiently find the duplicate element in the given array with a time complexity of O(N) and a space complexity of O(1).
+*/
