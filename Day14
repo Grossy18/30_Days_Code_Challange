@@ -1,0 +1,53 @@
+//Given an unsorted array of integers, find the length of the longest consecutive sequence of numbers, where elements can be in any order within the sequence. Array={100, 4, 200, 1, 3, 2}
+import java.util.HashSet;
+
+public class LongestConsecutiveSequence {
+    public static void main(String[] args) {
+        int[] nums = {100, 4, 200, 1, 3, 2};
+        int longestLength = longestConsecutive(nums);
+        System.out.println("Length of longest consecutive sequence: " + longestLength);
+    }
+
+    public static int longestConsecutive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        HashSet<Integer> numSet = new HashSet<>();
+        for (int num : nums) {
+            numSet.add(num);
+        }
+
+        int longestLength = 0;
+
+        for (int num : numSet) {
+            if (!numSet.contains(num - 1)) {
+                int currentNum = num;
+                int currentLength = 1;
+
+                while (numSet.contains(currentNum + 1)) {
+                    currentNum++;
+                    currentLength++;
+                }
+
+                longestLength = Math.max(longestLength, currentLength);
+            }
+        }
+
+        return longestLength;
+    }
+}
+
+/*
+In this code:
+
+We use a HashSet numSet to store the unique elements from the input array nums.
+
+We iterate through the elements of nums, adding them to numSet.
+
+We then iterate through the elements of numSet and for each element, we check if it is the start of a consecutive sequence. If it is (i.e., it doesn't have a predecessor in numSet), we traverse the sequence while increasing the currentLength. We update longestLength with the maximum of the current length and the longest length seen so far.
+
+Finally, we return longestLength as the result, which represents the length of the longest consecutive sequence of numbers.
+
+When you run the code with the provided example array nums, it will calculate and print the length of the longest consecutive sequence
+*/
