@@ -1,0 +1,48 @@
+//You are given a string of characters. Write a Java function to generate and print all possible permutations of the characters in the string. Ensure that each permutation is printed exactly once. String-abc
+public class PermutationsOfString {
+    public static void generatePermutations(String input) {
+        generatePermutationsHelper(input, 0);
+    }
+
+    private static void generatePermutationsHelper(String input, int index) {
+        if (index == input.length() - 1) {
+            System.out.println(input);
+            return;
+        }
+
+        for (int i = index; i < input.length(); i++) {
+            input = swap(input, index, i);
+            generatePermutationsHelper(input, index + 1);
+            input = swap(input, index, i); // Backtrack
+        }
+    }
+
+    private static String swap(String str, int i, int j) {
+        char[] charArray = str.toCharArray();
+        char temp = charArray[i];
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        String input = "abc";
+        System.out.println("All permutations of '" + input + "':");
+        generatePermutations(input);
+    }
+}
+
+
+/*
+In this code:
+
+The generatePermutations function is the main entry point that prints all permutations of the input string. It calls the helper function generatePermutationsHelper to generate permutations.
+
+The generatePermutationsHelper function recursively generates permutations by swapping characters at different positions. When the index reaches the last character, it prints the permutation.
+
+The swap function swaps characters in a string to generate different permutations.
+
+In the main method, you can specify the input string, and the code will print all possible permutations of the characters in the string "abc."
+
+When you run the code, it will generate and print all permutations
+*/
